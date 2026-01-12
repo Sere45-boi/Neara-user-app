@@ -1,4 +1,4 @@
-# sixam_mart
+# neara app
 
 A new Flutter application.
 
