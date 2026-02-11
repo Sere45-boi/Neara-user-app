@@ -10,7 +10,7 @@ class AppConstants {
   static const String fontFamily = 'Roboto';
   static const bool payInWevView = false;
   static const int balanceInputLen = 10;
-  static const String webHostedUrl = 'https://sminda.neara.ng';
+  static const String webHostedUrl = 'https://app.neara.ng';
   static const bool useReactWebsite = false;
   static const String googleServerClientId = '491987943015-agln6biv84krpnngdphj87jkko7r9lb8.apps.googleusercontent.com';
 
