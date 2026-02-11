@@ -35,13 +35,30 @@ class MapScreenState extends State<MapScreen> {
   Set<Marker> _markers = {};
   GoogleMapController? _mapController;
   bool isHovered = false;
+  BitmapDescriptor? _markerIcon;
+  BitmapDescriptor? _myLocationMarkerIcon;
 
   @override
   void initState() {
     super.initState();
 
     _latLng = LatLng(double.parse(widget.address.latitude!), double.parse(widget.address.longitude!));
-    // _setMarker();
+    _loadMarkerIcons();
+  }
+
+  Future<void> _loadMarkerIcons() async {
+    _markerIcon = await MarkerHelper.convertAssetToBitmapDescriptor(
+      width: 50,
+      imagePath: widget.fromStore ? (widget.isFood ? Images.restaurantMarker : Images.markerStore) : Images.locationMarker,
+    );
+    _myLocationMarkerIcon = await MarkerHelper.convertAssetToBitmapDescriptor(
+      width: 30,
+      imagePath: Images.userMarker,
+    );
+
+    if (_mapController != null) {
+      _setMarker();
+    }
   }
 
   void onEntered(bool isHovered) {
@@ -77,7 +94,9 @@ class MapScreenState extends State<MapScreen> {
                     markers:_markers,
                     onMapCreated: (controller) {
                       _mapController = controller;
-                      _setMarker();
+                      if (_markerIcon != null && _myLocationMarkerIcon != null) {
+                        _setMarker();
+                      }
                     },
                     style: Get.isDarkMode ? Get.find<ThemeController>().darkMap : Get.find<ThemeController>().lightMap,
                   ),
@@ -190,15 +209,9 @@ class MapScreenState extends State<MapScreen> {
 
   void _setMarker({AddressModel? address, bool fromCurrentLocation = false}) async {
 
-    BitmapDescriptor markerIcon = await MarkerHelper.convertAssetToBitmapDescriptor(
-      width: 50,
-      imagePath: widget.fromStore ? widget.isFood ? Images.restaurantMarker : Images.markerStore : Images.locationMarker,
-    );
-
-    BitmapDescriptor myLocationMarkerIcon = await MarkerHelper.convertAssetToBitmapDescriptor(
-      width: 30,
-      imagePath: Images.userMarker,
-    );
+    if (_markerIcon == null || _myLocationMarkerIcon == null) {
+      return;
+    }
 
     _markers = <Marker>{};
 
@@ -206,7 +219,7 @@ class MapScreenState extends State<MapScreen> {
       _markers.add(Marker(
         markerId: const MarkerId('marker'),
         position: _latLng,
-        icon: markerIcon,
+        icon: _markerIcon!,
       ));
     });
 
@@ -223,7 +236,7 @@ class MapScreenState extends State<MapScreen> {
             double.parse(AddressHelper.getUserAddressFromSharedPref()!.latitude!),
             double.parse(AddressHelper.getUserAddressFromSharedPref()!.longitude!),
           ),
-          icon: myLocationMarkerIcon,
+          icon: _myLocationMarkerIcon!,
         ));
       });
     }
@@ -285,7 +298,7 @@ class MapScreenState extends State<MapScreen> {
           double.parse(address.latitude!),
           double.parse(address.longitude!),
         ),
-        icon: myLocationMarkerIcon,
+        icon: _myLocationMarkerIcon!,
       ));
       setState(() {});
     }

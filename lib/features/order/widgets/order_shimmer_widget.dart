@@ -28,7 +28,7 @@ class OrderShimmerWidget extends StatelessWidget {
             crossAxisCount: isMobile ? 1 : 2,
             mainAxisSpacing: isDesktop ? 30 : 16,
             crossAxisSpacing: isDesktop ? 30 : 16,
-            childAspectRatio: isDesktop ? 5 : 3.2,
+            childAspectRatio: isDesktop ? 5 : 2.9,
           ),
 
           itemCount: 10,

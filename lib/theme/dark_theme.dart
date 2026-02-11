@@ -1,42 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:sixam_mart/util/app_constants.dart';
 
-ThemeData dark({
-  Color color = const Color(0xFFF97A00), // Brand Orange
-}) => ThemeData(
+ThemeData dark({Color color = const Color(0xFF9112BC)}) => ThemeData(
   fontFamily: AppConstants.fontFamily,
   primaryColor: color,
 
-  // Accent Purple
-  secondaryHeaderColor: const Color(0xFF9112BC),
+  // Accent
+  secondaryHeaderColor: const Color(0xFFF97A00),
 
   // Disabled & hint
   disabledColor: const Color(0xFF8A8F98),
   brightness: Brightness.dark,
-  hintColor: const Color(0xFFB5B5B5),
+  hintColor: const Color(0xFF9A9A9A),
 
-  // Card & surfaces (deep modern gray)
-  cardColor: const Color(0xFF111111),
+  // Card & surfaces
+  cardColor: const Color(0xFF121212),
   shadowColor: Colors.black.withValues(alpha: 0.6),
 
   // Text
   textTheme: const TextTheme(
-    bodyMedium: TextStyle(color: Color(0xFFE8E8E8)),
+    bodyMedium: TextStyle(color: Color(0xFFEDEDED)),
   ),
 
   // Buttons
   textButtonTheme: TextButtonThemeData(
-    style: TextButton.styleFrom(
-      foregroundColor: Color(0xFFF97A00), // Orange buttons / links
-    ),
+    style: TextButton.styleFrom(foregroundColor: color),
   ),
 
   // Color scheme
-  colorScheme: const ColorScheme.dark(
-    primary: Color(0xFFF97A00),
-    secondary: Color(0xFF9112BC),
-    surface: Color(0xFF121212),
-    error: Color(0xFFFF4A4A), // Soft red for dark theme
+  colorScheme: ColorScheme.dark(
+    primary: color,
+    secondary: const Color(0xFFF97A00),
+  ).copyWith(
+    surface: const Color(0xFF121212),
+    error: const Color(0xFFE53935),
   ),
 
   // Menus
@@ -52,8 +49,6 @@ ThemeData dark({
 
   // FAB
   floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: const Color(0xFFF97A00),
-    foregroundColor: Colors.white,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(500),
     ),
@@ -74,8 +69,5 @@ ThemeData dark({
 
   tabBarTheme: const TabBarThemeData(
     dividerColor: Colors.transparent,
-    labelColor: Color(0xFFF97A00),     // active tab = orange
-    unselectedLabelColor: Color(0xFF777777),
-    indicatorColor: Color(0xFFF97A00),
   ),
 );
