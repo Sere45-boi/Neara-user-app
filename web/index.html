@@ -40,8 +40,14 @@
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmnpP9oE5VV2exnPKVZFyfhySMNAMUoSA></script>
-<!--  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmnpP9oE5VV2exnPKVZFyfhySMNAMUoSA"></script>
+<script
+  async
+  defer
+  crossorigin="anonymous"
+  src="https://connect.facebook.net/en_US/sdk.js">
+</script>
+
 
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"></script>
@@ -183,15 +189,15 @@
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-      apiKey: "AIzaSyDFN-73p8zKVZbA0i5DtO215XzAb-xuGSE",
-      authDomain: "ammart-8885e.firebaseapp.com",
-      databaseURL: "https://ammart-8885e-default-rtdb.firebaseio.com",
-      projectId: "ammart-8885e",
-      storageBucket: "ammart-8885e.appspot.com",
-      messagingSenderId: "1000163153346",
-      appId: "1:1000163153346:web:4f702a4b5adbd5c906b25b",
-      measurementId: "G-L1GNL2YV61"
+      apiKey: "AIzaSyBNqx7--NHnpopGDfnHCKbHb2LGv737TBw",
+      authDomain: "neara-app.firebaseapp.com",
+      projectId: "neara-app",
+      storageBucket: "neara-app.firebasestorage.app",
+      messagingSenderId: "691319123840",
+      appId: "1:691319123840:web:7a5b9d57288c3a510e5b65",
+      measurementId: "G-XVC8F643GY" 
     };
+
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);

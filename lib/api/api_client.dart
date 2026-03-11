@@ -42,8 +42,8 @@ class ApiClient extends GetxService {
       }catch(_) {}
     }
     updateHeader(
-      token, addressModel?.zoneIds, addressModel?.areaIds,
-      sharedPreferences.getString(AppConstants.languageCode), moduleID, addressModel?.latitude,
+        token, addressModel?.zoneIds, addressModel?.areaIds,
+        sharedPreferences.getString(AppConstants.languageCode), moduleID, addressModel?.latitude,
         addressModel?.longitude
     );
   }

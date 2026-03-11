@@ -193,10 +193,10 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                     const SizedBox(height: Dimensions.paddingSizeExtremeLarge),
 
                     CustomButton(
-                      buttonText: 'help_and_support'.tr,
-                      onPressed: () {
-                        Get.toNamed(RouteHelper.getSupportRoute());
-                      }
+                        buttonText: 'help_and_support'.tr,
+                        onPressed: () {
+                          Get.toNamed(RouteHelper.getSupportRoute());
+                        }
                     ),
                     const SizedBox(height: Dimensions.paddingSizeLarge),
 
